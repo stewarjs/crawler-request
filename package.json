@@ -1,0 +1,48 @@
+{
+  "name": "crawler-request",
+  "version": "0.1.0",
+  "description": "A simple matcher with regex cache.",
+  "main": "crawler-request.js",
+  "keywords":[
+    "normalize",
+    "url",
+    "uri",
+    "address",
+    "string",
+    "normalization",
+    "normalisation",
+    "query",
+    "querystring",
+    "unicode",
+    "simplify",
+    "strip",
+    "trim",
+    "url parser"
+  ],
+  "dependencies": {
+    "escape-string-regexp": "*"
+  },
+  "devDependencies": {
+    "fs": "*",
+    "mocha": "*",
+    "path": "*"
+  },
+  "scripts": {
+    "test": "mocha --recursive",
+    "start": "node crawler-request.js"
+  },
+  "homepage":"https://gitlab.com/mehmet.kozan/crawler-request",
+  "bugs" :{ 
+    "url" : "https://gitlab.com/mehmet.kozan/crawler-request/issues",
+    "email" : "mehmet.kozan@live.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/mehmet.kozan/crawler-request.git"
+  },
+  "author": "Mehmet Kozan",
+  "license": "MIT",
+  "engines": {
+    "node": "8.2.1"
+  }
+}
