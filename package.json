@@ -1,27 +1,17 @@
 {
   "name": "crawler-request",
-  "version": "0.1.0",
-  "description": "A simple matcher with regex cache.",
+  "version": "0.1.1",
+  "description": "Http requests module customized for crawlers.",
   "main": "crawler-request.js",
   "keywords":[
-    "normalize",
-    "url",
-    "uri",
-    "address",
-    "string",
-    "normalization",
-    "normalisation",
-    "query",
-    "querystring",
-    "unicode",
-    "simplify",
-    "strip",
-    "trim",
-    "url parser"
+    "crawler",
+    "request",
+    "http",
+    "pdf-crawler",
+    "pdf2text",
+    "pdf-to-text"
   ],
-  "dependencies": {
-    "escape-string-regexp": "*"
-  },
+  "dependencies": {},
   "devDependencies": {
     "fs": "*",
     "mocha": "*",
@@ -31,18 +21,18 @@
     "test": "mocha --recursive",
     "start": "node crawler-request.js"
   },
-  "homepage":"https://gitlab.com/mehmet.kozan/crawler-request",
+  "homepage":"https://gitlab.com/autokent/crawler-request",
   "bugs" :{ 
-    "url" : "https://gitlab.com/mehmet.kozan/crawler-request/issues",
+    "url" : "https://gitlab.com/autokent/crawler-request/issues",
     "email" : "mehmet.kozan@live.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/mehmet.kozan/crawler-request.git"
+    "url": "https://gitlab.com/autokent/crawler-request.git"
   },
-  "author": "Mehmet Kozan",
+  "author": "Mehmet Kozan <mehmet.kozan@live.com>",
   "license": "MIT",
   "engines": {
-    "node": "8.2.1"
+    "node": ">=6.8.1"
   }
 }
