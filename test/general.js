@@ -8,7 +8,7 @@ describe('must crawl google', function () {
 		return CR(url).then(function (res) {
 			assert.equal(res.url, url);
 			assert.equal(res.type, "none");
-			assert.equal(res.status, -1);
+			assert.equal(res.status, -111);
 			assert.notEqual(res.error, null);
 		});
 	});
@@ -18,7 +18,7 @@ describe('must crawl google', function () {
 		return CR(url).then(function (res) {
 			assert.equal(res.url, url);
 			assert.equal(res.type, "none");
-			assert.equal(res.status, -1);
+			assert.equal(res.status, -100);
 			assert.notEqual(res.error, null);
 			assert.equal(res.error, "unsupported-extension");
 		})

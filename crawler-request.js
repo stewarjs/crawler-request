@@ -19,7 +19,7 @@ const html_to_text_options = {
 	noLinkBrackets: true
 };
 
-const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/i;
+const MIME_REGEX = /.*\.(jpg|png|gif|dotx|doc|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/i;
 
 function _crawler_request(current_url) {
 	let instance = Axios.create();
@@ -92,19 +92,29 @@ function _crawler_request(current_url) {
 			} else if (ret.type == "pdf") {
 				return new Promise(function (resolve, reject) {
 						let pdfParser = new Pdf2Json(this, 1);
-						pdfParser.on("pdfParser_dataError", errData => {
-							throw errData
+						pdfParser.on("pdfParser_dataError", err => {
+							ret.status = -222;
+							ret.error = err.parserError ? err.parserError : "pdf parser error.";
+							resolve(null);
+							//return ret;
+							//throw errData
 						});
 						pdfParser.on("pdfParser_dataReady", pdfData => resolve(pdfParser.getRawTextContent()));
 						pdfParser.parseBuffer(data);
 					})
 					.then(res => {
-						ret.text = res.replace(/Page[\(\)\s0-9]+Break/ig, '');
+						if (res) {
+							ret.text = res.replace(/Page[\(\)\s0-9]+Break/ig, '');
+						}
+
 						ret.type = "pdf";
 						return ret;
 					})
 					.catch(err => {
-						throw err
+						ret.status = -222;
+						ret.error = err.toString();
+						return ret;
+						//throw err
 					});
 			} else {
 				return ret;
@@ -125,7 +135,7 @@ function _crawler_request(current_url) {
 		maxRedirects: 5,
 	};
 
-	let current_status = -1;
+	let current_status = -100;
 
 	if (MIME_REGEX.test(current_url)) {
 		return Promise.resolve({
@@ -133,7 +143,7 @@ function _crawler_request(current_url) {
 			type: "none",
 			html: null,
 			text: null,
-			status: -1,
+			status: -100,
 			error: "unsupported-extension"
 		});
 	}
@@ -144,7 +154,7 @@ function _crawler_request(current_url) {
 			return res.data;
 		})
 		.then(function (res) {
-			res.status = current_status;
+			res.status = res.status == -222 ? -222 : current_status;
 			return res;
 		})
 		.catch(function (err) {
@@ -153,7 +163,7 @@ function _crawler_request(current_url) {
 				type: "none",
 				html: null,
 				text: null, //err.response.status
-				status: err.response && err.response.status ? err.response.status : -1,
+				status: err.response && err.response.status ? err.response.status : -111,
 				error: err.toString()
 			};
 		});
@@ -273,6 +283,13 @@ if (!module.parent) {
 		//	let result_10 = yield crawler_request_wrapper("http://www.fizik.itu.edu.tr/physics-10x/doc/FIZ101E_2014-2017.rar");
 		//	if (result_10.error != "unsupported-extension") debugger;
 		//}
+
+
+		//let result_11 = yield crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Articles/RT-SHPM/RT-SHPM-1.pdf");
+		//debugger;
+
+
+
 
 		//process.exit();
 
