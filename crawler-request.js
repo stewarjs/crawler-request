@@ -20,7 +20,7 @@ const html_to_text_options = {
 };
 
 
-const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/ig;
+const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/ig;
 
 function _chekc_ext(url) {
 	return MIME_REGEX.test(url);
@@ -158,8 +158,8 @@ function _crawler_request(current_url) {
 				url: current_url,
 				type: "none",
 				html: null,
-				text: null,
-				status: -1,
+				text: null, //err.response.status
+				status: err.response && err.response.status ? err.response.status : -1,
 				error: err.toString()
 			};
 		});
@@ -273,6 +273,13 @@ if (!module.parent) {
 
 		//let result_08 = yield crawler_request_wrapper(urlArr, callbackArr);
 		//debugger;
+
+
+		//let result_09 = yield crawler_request_wrapper("http://www.fizik.itu.edu.tr/tr/fac_seminar.php");
+		//debugger;
+		//process.exit();
+
+
 	});
 
 	testing_purpose();
