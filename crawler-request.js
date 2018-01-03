@@ -19,12 +19,7 @@ const html_to_text_options = {
 	noLinkBrackets: true
 };
 
-
-const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/ig;
-
-function _chekc_ext(url) {
-	return MIME_REGEX.test(url);
-}
+const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/i;
 
 function _crawler_request(current_url) {
 	let instance = Axios.create();
@@ -132,7 +127,7 @@ function _crawler_request(current_url) {
 
 	let current_status = -1;
 
-	if (_chekc_ext(current_url)) {
+	if (MIME_REGEX.test(current_url)) {
 		return Promise.resolve({
 			url: current_url,
 			type: "none",
@@ -142,7 +137,6 @@ function _crawler_request(current_url) {
 			error: "unsupported-extension"
 		});
 	}
-
 
 	return instance.request(request_config)
 		.then(function (res) {
@@ -275,10 +269,12 @@ if (!module.parent) {
 		//debugger;
 
 
-		//let result_09 = yield crawler_request_wrapper("http://www.fizik.itu.edu.tr/tr/fac_seminar.php");
-		//debugger;
-		//process.exit();
+		//while (true) {
+		//	let result_10 = yield crawler_request_wrapper("http://www.fizik.itu.edu.tr/physics-10x/doc/FIZ101E_2014-2017.rar");
+		//	if (result_10.error != "unsupported-extension") debugger;
+		//}
 
+		//process.exit();
 
 	});
 
