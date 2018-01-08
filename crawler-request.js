@@ -1,9 +1,9 @@
 const Axios = require('axios');
 const FileType = require('file-type');
-const Pdf2Json = require('pdf2json');
 const ContentType = require('content-type');
 const IconvLite = require('iconv-lite');
 const HtmlToText = require('html-to-text');
+const PdfParse = require('pdf-parse');
 
 
 const html_to_text_options = {
@@ -90,21 +90,10 @@ function _crawler_request(current_url) {
 				ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
 			} else if (ret.type == "pdf") {
-				return new Promise(function (resolve, reject) {
-						let pdfParser = new Pdf2Json(this, 1);
-						pdfParser.on("pdfParser_dataError", err => {
-							ret.status = -222;
-							ret.error = err.parserError ? err.parserError : "pdf parser error.";
-							resolve(null);
-							//return ret;
-							//throw errData
-						});
-						pdfParser.on("pdfParser_dataReady", pdfData => resolve(pdfParser.getRawTextContent()));
-						pdfParser.parseBuffer(data);
-					})
+				return PdfParse(data)
 					.then(res => {
 						if (res) {
-							ret.text = res.replace(/Page[\(\)\s0-9]+Break/ig, '');
+							ret.text = res.text
 						}
 
 						ret.type = "pdf";
@@ -114,7 +103,6 @@ function _crawler_request(current_url) {
 						ret.status = -222;
 						ret.error = err.toString();
 						return ret;
-						//throw err
 					});
 			} else {
 				return ret;
@@ -287,6 +275,9 @@ if (!module.parent) {
 
 		//let result_11 = yield crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Articles/RT-SHPM/RT-SHPM-1.pdf");
 		//debugger;
+
+		let result_12 = yield crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Flyers/N_Akin_makale-2015.pdf");
+		debugger;
 
 
 
