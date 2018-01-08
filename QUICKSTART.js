@@ -1,24 +1,21 @@
-//const CR = require('crawler-request');
-const CR = require('./');
-const Co = require('co');
-const Cheerio = require('cheerio');
-const Fs = require("fs");
-const Url = require('url');
+//const crawler = require('crawler-request');
+const crawler = require('./');
+const co = require('co');
 const callbackArr = [];
 
 function test1(result) {
-    result["test1"] = "test1";
-    return result;
+	result["test1"] = "test1";
+	return result;
 }
 
 function test2(result) {
-    result["test2"] = "test2";
-    return result;
+	result["test2"] = "test2";
+	return result;
 }
 
 function text_size(result) {
-    result["text_size"] = result.text == null ? 0 : result.text.length;
-    return result;
+	result["text_size"] = result.text == null ? 0 : result.text.length;
+	return result;
 }
 
 callbackArr.push(test1);
@@ -43,36 +40,31 @@ urlArr.push("http://onlinelibrary.wiley.com/doi/10.1002/crat.201700021/abstract"
 
 
 // test code starts here
+let testing_purpose = co.wrap(function* () {
 
-let testing_purpose = Co.wrap(function* () {
-    
-    let response_01 = yield CR("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all");
-    debugger;
+	let response_01 = yield crawler("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all");
+	debugger;
 
-    let response_02 = yield CR("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all",callbackArr);
-    debugger;
+	let response_02 = yield crawler("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all", callbackArr);
+	debugger;
 
-    let response_03 = yield CR("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf");
-    debugger;
+	let response_03 = yield crawler("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf");
+	debugger;
 
-    let response_04 = yield CR("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf", callbackArr);
-    debugger;
+	let response_04 = yield crawler("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf", callbackArr);
+	debugger;
 
-    let response_05 = yield CR("http://daytam.atauni.edu.tr/uploads/AFM.docx", callbackArr);
-    debugger;
+	let response_05 = yield crawler("http://daytam.atauni.edu.tr/uploads/AFM.docx", callbackArr);
+	debugger;
 
-    let response_06 = yield CR("aaabbbccc");
-    debugger;
+	let response_06 = yield crawler("aaabbbccc");
+	debugger;
 
-    let response_07 = yield CR("aaabbbccc", callbackArr);
-    debugger;
+	let response_07 = yield crawler("aaabbbccc", callbackArr);
+	debugger;
 
-    let response_08 = yield CR(urlArr, callbackArr);
-    debugger;
+	let response_08 = yield crawler(urlArr, callbackArr);
+	debugger;
 });
-    
+
 testing_purpose();
-
-
-
-

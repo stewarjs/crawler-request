@@ -42,7 +42,7 @@ function response_text_size(response){
     return response;
 }
 
-crawler("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf",response_text_size).then(function(response){
+crawler("https://stackoverflow.com/",response_text_size).then(function(response){
     // handle response
 	console.log(response.size);
 });
@@ -70,7 +70,7 @@ GitLab calls it merge request instead of pull request.
 ### Contact me on WhatsApp
 For discussing about the package.
 
-[![WhatsApp](https://img.shields.io/badge/style-WhatsApp-green.svg?style=flat&label=%2B90%20506%20304%2024%2080)](https://api.whatsapp.com/send?phone=905063042480&text=Hi%2C%0ALet%27s%20talk%20about%20crawler-request)
+[![WhatsApp](https://img.shields.io/badge/style-WhatsApp-green.svg?style=flat)](https://api.whatsapp.com/send?phone=905063042480&text=Hi%2C%0ALet%27s%20talk%20about%20crawler-request)
 
 ## License
 [MIT licensed](https://gitlab.com/autokent/crawler-request/blob/master/LICENSE) and all it's dependencies are MIT or BSD licensed.
