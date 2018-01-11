@@ -198,7 +198,6 @@ module.exports = crawler_request_wrapper;
 
 //for testing purpose
 if (!module.parent) {
-	let Co = require('co');
 	let Cheerio = require('cheerio');
 	let Fs = require("fs");
 	let Url = require('url');
@@ -240,43 +239,43 @@ if (!module.parent) {
 	urlArr.push("http://onlinelibrary.wiley.com/doi/10.1002/crat.201700021/abstract");
 
 
-	let testing_purpose = Co.wrap(function* () {
+	async function testing_purpose() {
 
-		//let result_01 = yield crawler_request_wrapper("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all");
+		//let result_01 = await crawler_request_wrapper("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all");
 		//debugger;
 
-		//let result_02 = yield crawler_request_wrapper("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all",callbackArr);
+		//let result_02 = await crawler_request_wrapper("https://stackoverflow.com/questions/42772401/parallel-operations-with-promise-all",callbackArr);
 		//debugger;
 
-		//let result_03 = yield crawler_request_wrapper("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf");
+		//let result_03 = await crawler_request_wrapper("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf");
 		//debugger;
 
-		//let result_04 = yield crawler_request_wrapper("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf", callbackArr);
+		//let result_04 = await crawler_request_wrapper("http://journals.tubitak.gov.tr/medical/issues/sag-09-39-3/sag-39-3-4-0902-21.pdf", callbackArr);
 		//debugger;
 
-		//let result_05 = yield crawler_request_wrapper("http://daytam.atauni.edu.tr/uploads/AFM.docx", callbackArr);
+		//let result_05 = await crawler_request_wrapper("http://daytam.atauni.edu.tr/uploads/AFM.docx", callbackArr);
 		//debugger;
 
-		//let result_06 = yield crawler_request_wrapper("aaabbbccc");
+		//let result_06 = await crawler_request_wrapper("aaabbbccc");
 		//debugger;
 
-		//let result_07 = yield crawler_request_wrapper("aaabbbccc", callbackArr);
+		//let result_07 = await crawler_request_wrapper("aaabbbccc", callbackArr);
 		//debugger;
 
-		//let result_08 = yield crawler_request_wrapper(urlArr, callbackArr);
+		//let result_08 = await crawler_request_wrapper(urlArr, callbackArr);
 		//debugger;
 
 
 		//while (true) {
-		//	let result_10 = yield crawler_request_wrapper("http://www.fizik.itu.edu.tr/physics-10x/doc/FIZ101E_2014-2017.rar");
+		//	let result_10 = await crawler_request_wrapper("http://www.fizik.itu.edu.tr/physics-10x/doc/FIZ101E_2014-2017.rar");
 		//	if (result_10.error != "unsupported-extension") debugger;
 		//}
 
 
-		//let result_11 = yield crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Articles/RT-SHPM/RT-SHPM-1.pdf");
+		//let result_11 = await crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Articles/RT-SHPM/RT-SHPM-1.pdf");
 		//debugger;
 
-		let result_12 = yield crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Flyers/N_Akin_makale-2015.pdf");
+		let result_12 = await crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Flyers/N_Akin_makale-2015.pdf");
 		debugger;
 
 
@@ -284,7 +283,7 @@ if (!module.parent) {
 
 		//process.exit();
 
-	});
+	};
 
 	testing_purpose();
 }
