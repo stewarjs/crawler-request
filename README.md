@@ -2,14 +2,6 @@
 
 **HTTP request module customized for crawlers.**
 
-[![version](https://img.shields.io/npm/v/crawler-request.svg)](https://www.npmjs.org/package/crawler-request)
-[![downloads](https://img.shields.io/npm/dt/crawler-request.svg)](https://www.npmjs.org/package/crawler-request)
-[![node](https://img.shields.io/node/v/crawler-request.svg)](https://nodejs.org/)
-[![status](https://gitlab.com/autokent/crawler-request/badges/master/pipeline.svg)](https://gitlab.com/autokent/crawler-request/pipelines)
-
-## Installation
-`npm install crawler-request`
-
 ## Usage
 
 ### Simple Request
