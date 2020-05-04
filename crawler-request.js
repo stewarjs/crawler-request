@@ -3,6 +3,7 @@ const FileType = require('file-type');
 const ContentType = require('content-type');
 const IconvLite = require('iconv-lite');
 const HtmlToText = require('html-to-text');
+const cheerio = require('cheerio');
 const PdfParse = require('pdf-parse');
 
 
@@ -36,7 +37,7 @@ function _crawler_request(current_url) {
 				type: "none",
 				html: null,
 				text: null,
-				metadata: null,
+				metadata: array(),
 				status: null,
 				error: null
 			};
@@ -57,6 +58,11 @@ function _crawler_request(current_url) {
 					}
 
 					if (charset == 'utf-8' || charset == 'ascii' || charset == 'none' || !IconvLite.encodingExists(charset)) {
+						var $ = cheerio.load(data);
+						ret.metadata = [{
+							title: $('head > title').text(),
+							author: $('meta[name="author"]').attr('content')
+						}];
 						ret.html = data.toString();
 						ret.type = "html";
 					} else {
