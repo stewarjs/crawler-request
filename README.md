@@ -1,4 +1,6 @@
 # crawler-request
+Forked from https://gitlab.com/autokent/crawler-request.
+Needed additional functionality to return metadata from PDFs.
 
 **HTTP request module customized for crawlers.**
 
@@ -38,11 +40,6 @@ crawler("https://stackoverflow.com/",response_text_size).then(function(response)
 	console.log(response.size);
 });
 ```
-
-## Test
-`mocha` or `npm test`
-
-Check [test folder](https://gitlab.com/autokent/crawler-request/tree/master/test) and [quickstart.js](https://gitlab.com/autokent/crawler-request/blob/master/QUICKSTART.js) for extra usages.
 
 ## License
 [MIT licensed](https://gitlab.com/autokent/crawler-request/blob/master/LICENSE) and all it's dependencies are MIT or BSD licensed.
