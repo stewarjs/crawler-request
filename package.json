@@ -34,16 +34,16 @@
 		"test": "mocha --recursive --slow 2000",
 		"start": "node crawler-request.js"
 	},
-	"homepage": "https://gitlab.com/autokent/crawler-request",
+	"homepage": "https://github.com/stewarjs/crawler-request",
 	"bugs": {
-		"url": "https://gitlab.com/autokent/crawler-request/issues",
-		"email": "mehmet.kozan@live.com"
+		"url": "https://github.com/stewarjs/crawler-request/issues",
+		"email": "stewarjs@gmail.com"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://gitlab.com/autokent/crawler-request.git"
+		"url": "https://github.com/stewarjs/crawler-request.git"
 	},
-	"author": "Mehmet Kozan <mehmet.kozan@live.com>",
+	"author": "Jeff Stewart <stewarjs@gmail.com>",
 	"license": "MIT",
 	"engines": {
 		"node": ">=6.8.1"
