@@ -36,6 +36,7 @@ function _crawler_request(current_url) {
 				type: "none",
 				html: null,
 				text: null,
+				metadata: null,
 				status: null,
 				error: null
 			};
@@ -93,7 +94,8 @@ function _crawler_request(current_url) {
 				return PdfParse(data)
 					.then(res => {
 						if (res) {
-							ret.text = res.text
+							ret.metadata = res.metadata;
+							ret.text = res.text;
 						}
 
 						ret.type = "pdf";
