@@ -17,7 +17,7 @@
 		"html-to-text"
 	],
 	"dependencies": {
-		"axios": "^0.17.1",
+		"axios": "^0.19.2",
 		"content-type": "^1.0.4",
 		"file-type": "^7.4.0",
 		"html-to-text": "^3.3.0",
