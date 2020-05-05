@@ -100,11 +100,12 @@ function _crawler_request(current_url) {
 				return PdfParse(data)
 					.then(res => {
 						if (res) {
+							console.log(res.metadata);
 							ret.metadata = res.metadata;
 							ret.text = res.text;
 						}
 
-						ret.type = "pdf2";
+						ret.type = "pdf";
 						return ret;
 					})
 					.catch(err => {
@@ -139,6 +140,7 @@ function _crawler_request(current_url) {
 			type: "none",
 			html: null,
 			text: null,
+			metadata: array(),
 			status: -100,
 			error: "unsupported-extension"
 		});
@@ -159,6 +161,7 @@ function _crawler_request(current_url) {
 				type: "none",
 				html: null,
 				text: null, //err.response.status
+				metadata: array(),
 				status: err.response && err.response.status ? err.response.status : -111,
 				error: err.toString()
 			};
