@@ -104,7 +104,7 @@ function _crawler_request(current_url) {
 							ret.text = res.text;
 						}
 
-						ret.type = "pdf";
+						ret.type = "pdf2";
 						return ret;
 					})
 					.catch(err => {
