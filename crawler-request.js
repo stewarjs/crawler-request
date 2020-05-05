@@ -36,7 +36,7 @@ function _crawler_request(current_url) {
 				url: current_url,
 				type: "none",
 				html: null,
-				text: null,
+				//text: null,
 				metadata: array(),
 				status: null,
 				error: null
@@ -101,7 +101,7 @@ function _crawler_request(current_url) {
 					.then(res => {
 						if (res) {
 							ret.metadata = res.metadata;
-							ret.text = res.text;
+							//ret.text = res.text;
 						}
 
 						ret.type = "pdf";
@@ -138,7 +138,7 @@ function _crawler_request(current_url) {
 			url: current_url,
 			type: "none",
 			html: null,
-			text: null,
+			//text: null,
 			metadata: array(),
 			status: -100,
 			error: "unsupported-extension"
@@ -159,7 +159,7 @@ function _crawler_request(current_url) {
 				url: current_url,
 				type: "none",
 				html: null,
-				text: null, //err.response.status
+				//text: null, //err.response.status
 				metadata: array(),
 				status: err.response && err.response.status ? err.response.status : -111,
 				error: err.toString()
