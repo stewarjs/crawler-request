@@ -58,16 +58,16 @@ function _crawler_request(current_url) {
 					}
 
 					if (charset == 'utf-8' || charset == 'ascii' || charset == 'none' || !IconvLite.encodingExists(charset)) {
-						var $ = cheerio.load(data);
+						var $ = cheerio.load(data.toString());
 						ret.metadata = [{
 							title: $('head > title').text(),
 							author: $('meta[name="author"]').attr('content')
 						}];
 						ret.html = data.toString();
-						ret.type = "html2";
+						ret.type = "html";
 					} else {
 						ret.html = IconvLite.decode(data, charset);
-						ret.type = "html2";
+						ret.type = "html";
 					}
 				} else {
 					ret.type = "none";
@@ -78,7 +78,7 @@ function _crawler_request(current_url) {
 
 			if (mimeType == null) {
 				ret.html = data.toString();
-				ret.type = "html2";
+				ret.type = "html";
 			} else if (mimeType.ext == 'pdf') {
 				ret.type = "pdf";
 			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?pdf/ig)) {
@@ -93,8 +93,8 @@ function _crawler_request(current_url) {
 
 
 
-			if (ret.type == "html2") {
-				ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
+			if (ret.type == "html") {
+				//ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
 			} else if (ret.type == "pdf") {
 				return PdfParse(data)
