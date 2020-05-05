@@ -64,10 +64,10 @@ function _crawler_request(current_url) {
 							author: $('meta[name="author"]').attr('content')
 						}];
 						ret.html = data.toString();
-						ret.type = "html";
+						ret.type = "html2";
 					} else {
 						ret.html = IconvLite.decode(data, charset);
-						ret.type = "html";
+						ret.type = "html2";
 					}
 				} else {
 					ret.type = "none";
@@ -78,7 +78,7 @@ function _crawler_request(current_url) {
 
 			if (mimeType == null) {
 				ret.html = data.toString();
-				ret.type = "html";
+				ret.type = "html2";
 			} else if (mimeType.ext == 'pdf') {
 				ret.type = "pdf";
 			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?pdf/ig)) {
@@ -93,14 +93,13 @@ function _crawler_request(current_url) {
 
 
 
-			if (ret.type == "html") {
+			if (ret.type == "html2") {
 				ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
 			} else if (ret.type == "pdf") {
 				return PdfParse(data)
 					.then(res => {
 						if (res) {
-							console.log(res.metadata);
 							ret.metadata = res.metadata;
 							ret.text = res.text;
 						}
