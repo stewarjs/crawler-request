@@ -36,7 +36,7 @@ function _crawler_request(current_url) {
 				url: current_url,
 				type: "none",
 				html: null,
-				//text: null,
+				text: null,
 				metadata: array(),
 				status: null,
 				error: null
@@ -101,7 +101,7 @@ function _crawler_request(current_url) {
 					.then(res => {
 						if (res) {
 							ret.metadata = res.metadata;
-							//ret.text = res.text;
+							ret.text = res.text;
 						}
 
 						ret.type = "pdf";
@@ -138,7 +138,7 @@ function _crawler_request(current_url) {
 			url: current_url,
 			type: "none",
 			html: null,
-			//text: null,
+			text: null,
 			metadata: array(),
 			status: -100,
 			error: "unsupported-extension"
@@ -159,7 +159,7 @@ function _crawler_request(current_url) {
 				url: current_url,
 				type: "none",
 				html: null,
-				//text: null, //err.response.status
+				text: null, //err.response.status
 				metadata: array(),
 				status: err.response && err.response.status ? err.response.status : -111,
 				error: err.toString()
@@ -233,7 +233,7 @@ if (!module.parent) {
 	callbackArr.push(text_size);
 
 	var urlArr = [];
-	urlArr.push("http://www.mu.edu.tr/tr/personel/osaygin");
+	/*urlArr.push("http://www.mu.edu.tr/tr/personel/osaygin");
 	urlArr.push("http://www.saglikbilimleri.mu.edu.tr/tr/beden-egitimi-ve-spor-anabilim-dali-akademik-kurulu-uyeleri-5461");
 	urlArr.push("https://www.j-humansciences.com/ojs/index.php/IJHS/article/viewFile/2010/815");
 	urlArr.push("https://www.j-humansciences.com/ojs/index.php/IJHS/article/viewFile/843/406");
@@ -246,7 +246,7 @@ if (!module.parent) {
 	urlArr.push("http://www.groupes.polymtl.ca/jnmes/archives/article_in_press/JNMES-1029.pdf");
 	urlArr.push("https://www.researchgate.net/publication/315951188_Atomic_force_microscopy_investigation_of_step_generation_and_bunching_on_100_facet_of_CH_3_NH_3_PbI_3_crystal_grown_from_g-Butyrolactone_Atomic_force_microscopy_investigation_of_step_generation_and_bu");
 	urlArr.push("http://ezfind.technion.ac.il/vufind/EDS/Search?lookfor=SINGLE+crystals&type=SU");
-	urlArr.push("http://onlinelibrary.wiley.com/doi/10.1002/crat.201700021/abstract");
+	urlArr.push("http://onlinelibrary.wiley.com/doi/10.1002/crat.201700021/abstract");*/
 
 
 	async function testing_purpose() {
@@ -285,8 +285,8 @@ if (!module.parent) {
 		//let result_11 = await crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Articles/RT-SHPM/RT-SHPM-1.pdf");
 		//debugger;
 
-		let result_12 = await crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Flyers/N_Akin_makale-2015.pdf");
-		debugger;
+		/*let result_12 = await crawler_request_wrapper("https://www.nanomagnetics-inst.com/usrfiles/files/Flyers/N_Akin_makale-2015.pdf");
+		debugger;*/
 
 
 
