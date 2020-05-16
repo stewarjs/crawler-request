@@ -37,7 +37,7 @@ function _crawler_request(current_url) {
 				type: "none",
 				html: null,
 				text: null,
-				metadata: array(),
+				metadata: null,
 				status: null,
 				error: null
 			};
@@ -139,7 +139,7 @@ function _crawler_request(current_url) {
 			type: "none",
 			html: null,
 			text: null,
-			metadata: array(),
+			metadata: null,
 			status: -100,
 			error: "unsupported-extension"
 		});
@@ -160,7 +160,7 @@ function _crawler_request(current_url) {
 				type: "none",
 				html: null,
 				text: null, //err.response.status
-				metadata: array(),
+				metadata: null,
 				status: err.response && err.response.status ? err.response.status : -111,
 				error: err.toString()
 			};
