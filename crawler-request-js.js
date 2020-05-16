@@ -58,11 +58,6 @@ function _crawler_request(current_url) {
 					}
 
 					if (charset == 'utf-8' || charset == 'ascii' || charset == 'none' || !IconvLite.encodingExists(charset)) {
-						var $ = cheerio.load(data.toString());
-						ret.metadata = [{
-							title: $('head > title').text(),
-							author: $('meta[name="author"]').attr('content')
-						}];
 						ret.html = data.toString();
 						ret.type = "html";
 					} else {
@@ -94,6 +89,11 @@ function _crawler_request(current_url) {
 
 
 			if (ret.type == "html") {
+                var $ = cheerio.load(ret.html);
+                ret.metadata = [{
+                    title: $('head > title').text(),
+                    author: $('meta[name="author"]').attr('content')
+                }];
 				//ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
 			} else if (ret.type == "pdf") {
