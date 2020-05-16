@@ -92,7 +92,7 @@ function _crawler_request(current_url) {
                 var $ = cheerio.load(ret.html);
                 ret.metadata = [{
                     title: $('head > title').text(),
-                    author: $('meta[name="author"]').attr('content')
+                    author: $('meta[name="description"]').attr('content')
                 }];
 				//ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
