@@ -1,6 +1,6 @@
 {
 	"name": "crawler-request-js",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "HTTP request module customized for crawlers.",
 	"main": "crawler-request-js.js",
 	"keywords": [
