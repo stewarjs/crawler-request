@@ -90,11 +90,11 @@ function _crawler_request(current_url) {
 
 			if (ret.type == "html") {
                 var $ = cheerio.load(ret.html);
-                ret.metadata = [{
-                    title: $('head > title').text(),
-                    author: $('meta[name="author"]').attr('content'),
-                    lastModified: $('meta[http-equiv="last-modified"]').attr('content'),
-                }];
+                ret.metadata = {
+                    Title: $('head > title').text(),
+                    Author: $('meta[name="author"]').attr('content'),
+                    ModDate: $('meta[http-equiv="last-modified"]').attr('content'),
+                };
 				//ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
 			} else if (ret.type == "pdf") {
