@@ -11,7 +11,7 @@
 		"pdf2text",
 		"pdf-to-text",
 		"pdf2json",
-        "office-document-properties"
+        "office-document-properties",
 		"axios",
 		"pdf",
 		"pdf-parser",
