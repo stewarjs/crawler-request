@@ -125,19 +125,6 @@ function _crawler_request(current_url) {
 						ret.error = err.toString();
 						return ret;
 					});
-			} else if (ret.type == "docx") {
-				return getDocumentProperties.fromBuffer(data, function(err, res) {
-                    if (res) {
-                        ret.metadata = res;
-                        //ret.text = res.text;
-                    }else{
-                        ret.metadata = err;
-                    }
-
-                    ret.type = "docx";
-                    return ret;
-                });
-					
 			} else {
 				return ret;
 			}
