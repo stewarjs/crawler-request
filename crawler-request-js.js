@@ -91,7 +91,7 @@ function _crawler_request(current_url) {
 			if (ret.type == "html") {
                 var $ = cheerio.load(ret.html);
                 ret.metadata = {
-                    Title: $('head > title').text(),
+                    Title: $('title').text(),
                     Author: $('meta[name="author"]').attr('content'),
                     ModDate: $('meta[http-equiv="last-modified"]').attr('content'),
                 };
