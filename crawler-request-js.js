@@ -101,7 +101,7 @@ function _crawler_request(current_url) {
 				return PdfParse(data)
 					.then(res => {
 						if (res) {
-							ret.metadata = res.info;
+							ret.metadata = res.metadata;
 							ret.text = res.text;
 						}
 
