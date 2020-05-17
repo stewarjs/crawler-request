@@ -44,7 +44,7 @@ const crawler = require('crawler-request-js');
 
 crawler("http://careers.stackoverflow.com/stack_overflow_careers.pdf").then(function(response){
     // handle response
-    console.log(response.metadata['dc:title';
+    console.log(response.metadata['dc:title'];
     console.log(response.metadata['dc:creator']);
     console.log(response.metadata['dc:description']);
     console.log(response.metadata['xmp:modifydate']);
