@@ -106,7 +106,7 @@ function _crawler_request(current_url) {
 						return ret;
 					});
 			} else if (ret.type == "doc") {
-				OFFICEPROPS.getData(data).then(function(metadata){
+				return OFFICEPROPS.getData(data).then(function(metadata){
                     ret.metadata = metadata;
                     return ret;
                 }).catch(err => {
