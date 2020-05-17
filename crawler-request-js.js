@@ -84,8 +84,14 @@ function _crawler_request(current_url) {
 				ret.type = "pptx";
 			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.wordprocessingml.document/ig)) {
 				ret.type = "docx";
+			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?msword/ig)) {
+				ret.type = "doc";
+			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.ms-excel/ig)) {
+				ret.type = "xls";
+			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.spreadsheetml.sheet/ig)) {
+				ret.type = "xlsx";
 			} else {
-				//not supported mime-type
+				//unfiltered mime type
 				ret.type = mimeType.mime;
 
 			}
@@ -119,6 +125,17 @@ function _crawler_request(current_url) {
 						ret.error = err.toString();
 						return ret;
 					});
+			} else if (ret.type == "docx") {
+				return getDocumentProperties.fromBuffer(buffer, function(err, data) {
+                    if (data) {
+                        ret.metadata = data;
+                        //ret.text = res.text;
+                    }
+
+                    ret.type = "docx";
+                    return ret;
+                }
+					
 			} else {
 				return ret;
 			}
