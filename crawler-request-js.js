@@ -43,6 +43,8 @@ function _crawler_request(current_url) {
 				status: null,
 				error: null
 			};
+            
+            // determine file type
 
 			let type_str = headers['content-type'];
 
@@ -66,40 +68,19 @@ function _crawler_request(current_url) {
 						ret.html = IconvLite.decode(data, charset);
 						ret.type = "html";
 					}
+				} else if (type_str.match(/\/vnd.openxmlformats-officedocument.presentationml.presentation/ig) || type_str.match(/\/vnd.ms-powerpoint/ig)) {
+					ret.type = "ppt";
+				} else if (type_str.match(/\/vnd.openxmlformats-officedocument.wordprocessingml.document/ig) || type_str.match(/\/msword/ig)) {
+					ret.type = "doc";
+				} else if (type_str.match(/\/vnd.openxmlformats-officedocument.spreadsheetml.sheet/ig) || type_str.match(/\/vnd.ms-excel/ig)) {
+					ret.type = "xls";
 				} else {
 					ret.type = type_str;
 				}
 			}
 
-			/*let mimeType = FileType(data);
 
-			if (mimeType == null) {
-				ret.html = data.toString();
-				ret.type = "html";
-			} else if (mimeType.ext == 'pdf') {
-				ret.type = "pdf";
-			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?pdf/ig)) {
-				ret.type = "pdf";
-			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.presentationml.presentation/ig)) {
-				ret.type = "pptx";
-			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.wordprocessingml.document/ig)) {
-				ret.type = "docx";
-			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?msword/ig)) {
-				ret.type = "doc";
-			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.ms-excel/ig)) {
-				ret.type = "xls";
-			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.spreadsheetml.sheet/ig)) {
-				ret.type = "xlsx";
-			} else {
-				//unfiltered mime type
-				ret.type = mimeType.mime;
-
-			}*/
-
-			//at this point file type is dedected.
-
-
-
+            // get metadata and plaintext
 			if (ret.type == "html") {
                 var $ = cheerio.load(ret.html);
                 ret.metadata = {
@@ -117,7 +98,6 @@ function _crawler_request(current_url) {
 							ret.text = res.text;
 						}
 
-						ret.type = "pdf";
 						return ret;
 					})
 					.catch(err => {
