@@ -11,7 +11,7 @@
 		"pdf2text",
 		"pdf-to-text",
 		"pdf2json",
-        "office-document-properties",
+        "open-office",
 		"axios",
 		"pdf",
 		"pdf-parser",
@@ -20,7 +20,7 @@
 	"dependencies": {
 		"axios": "^0.18.1",
 		"cheerio": "^1.0.0-rc.3",
-        "office-document-properties": "^1.0.9",
+        "officeprops": "^1.1.5",
 		"content-type": "^1.0.4",
 		"file-type": "^7.4.0",
 		"html-to-text": "^3.3.0",

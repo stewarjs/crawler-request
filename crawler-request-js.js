@@ -5,7 +5,7 @@ const IconvLite = require('iconv-lite');
 const HtmlToText = require('html-to-text');
 const cheerio = require('cheerio');
 const PdfParse = require('pdf-parse');
-const getDocumentProperties = require('office-document-properties');
+const OFFICEPROPS = require('officeprops');
 
 
 const html_to_text_options = {
@@ -67,11 +67,11 @@ function _crawler_request(current_url) {
 						ret.type = "html";
 					}
 				} else {
-					ret.type = "none";
+					ret.type = type_str;
 				}
 			}
 
-			let mimeType = FileType(data);
+			/*let mimeType = FileType(data);
 
 			if (mimeType == null) {
 				ret.html = data.toString();
@@ -94,7 +94,7 @@ function _crawler_request(current_url) {
 				//unfiltered mime type
 				ret.type = mimeType.mime;
 
-			}
+			}*/
 
 			//at this point file type is dedected.
 
