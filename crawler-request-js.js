@@ -105,6 +105,14 @@ function _crawler_request(current_url) {
 						ret.error = err.toString();
 						return ret;
 					});
+			} else if (ret.type == "doc") {
+				return OFFICEPROPS.getData(data).then(function(metadata){
+                    ret.metadata = metadata.readOnly;
+                }).catch(err => {
+						ret.status = -222;
+						ret.error = err.toString();
+						return ret;
+					});
 			} else {
 				return ret;
 			}
