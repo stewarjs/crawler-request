@@ -126,9 +126,9 @@ function _crawler_request(current_url) {
 						return ret;
 					});
 			} else if (ret.type == "docx") {
-				return getDocumentProperties.fromBuffer(buffer, function(err, data) {
-                    if (data) {
-                        ret.metadata = data;
+				return getDocumentProperties.fromBuffer(data, function(err, res) {
+                    if (res) {
+                        ret.metadata = res;
                         //ret.text = res.text;
                     }
 
