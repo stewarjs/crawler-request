@@ -80,6 +80,10 @@ function _crawler_request(current_url) {
 				ret.type = "pdf";
 			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?pdf/ig)) {
 				ret.type = "pdf";
+			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.presentationml.presentation/ig)) {
+				ret.type = "pptx";
+			} else if (mimeType.mime != null && mimeType.mime.match(/\/(x-)?vnd.openxmlformats-officedocument.wordprocessingml.document/ig)) {
+				ret.type = "docx";
 			} else {
 				//not supported mime-type
 				ret.type = mimeType.mime;
