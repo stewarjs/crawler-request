@@ -95,13 +95,13 @@ function _crawler_request(current_url) {
                     Author: $('meta[name="author"]').attr('content'),
                     ModDate: $('meta[http-equiv="last-modified"]').attr('content'),
                 };
-				//ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
+				ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
 			} else if (ret.type == "pdf") {
 				return PdfParse(data)
 					.then(res => {
 						if (res) {
-							ret.metadata = res.metadata;
+							ret.metadata = res.metadata._metadata;
 							ret.text = res.text;
 						}
 
