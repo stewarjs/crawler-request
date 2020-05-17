@@ -105,7 +105,7 @@ function _crawler_request(current_url) {
 						ret.error = err.toString();
 						return ret;
 					});
-			} else if (ret.type == "doc") {
+			} else if (ret.type == "doc" || ret.type == "ppt" || ret.type == "xls") {
 				return OFFICEPROPS.getData(data).then(function(metadata){
                     ret.metadata = metadata;
                     return ret;

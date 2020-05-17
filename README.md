@@ -1,6 +1,6 @@
 # crawler-request-js
 Forked from https://gitlab.com/autokent/crawler-request.
-Needed additional functionality to return metadata from HTML and PDFs.
+Modified to pass metadata back from HTML, PDF, and Open Office documents.
 
 **HTTP request module customized for crawlers.**
 
