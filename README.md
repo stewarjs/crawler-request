@@ -51,6 +51,18 @@ crawler("http://careers.stackoverflow.com/stack_overflow_careers.pdf").then(func
 });
 ```
 
+### Open Office Metadata
+```js
+const crawler = require('crawler-request-js');
+
+crawler("http://example.com/spreadsheet.xlsx").then(function(response){
+    // handle response
+    console.log(response.metadata.editable.title.value);
+    console.log(response.metadata.editable.creator.value);
+    console.log(response.metadata.editable.modified.value);
+});
+```
+
 ### Extend
 ```js
 const crawler = require('crawler-request-js');
