@@ -5,6 +5,7 @@ const IconvLite = require('iconv-lite');
 const HtmlToText = require('html-to-text');
 const cheerio = require('cheerio');
 const PdfParse = require('pdf-parse');
+const getDocumentProperties = require('office-document-properties');
 
 
 const html_to_text_options = {
@@ -20,7 +21,8 @@ const html_to_text_options = {
 	noLinkBrackets: true
 };
 
-const MIME_REGEX = /.*\.(jpg|png|gif|dotx|doc|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|docx|pptx|xlsx|3gp|css|xlam|xla|xls|xps|exe)$/i;
+// Skip these extensions
+const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|3gp|css|xlam|xla|xps|exe)$/i;
 
 function _crawler_request(current_url) {
 	let instance = Axios.create();
