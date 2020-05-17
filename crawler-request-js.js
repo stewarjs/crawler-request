@@ -82,7 +82,7 @@ function _crawler_request(current_url) {
 				ret.type = "pdf";
 			} else {
 				//not supported mime-type
-				ret.type = "none";
+				ret.type = mimeType.mime;
 
 			}
 
