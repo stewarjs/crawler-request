@@ -134,7 +134,7 @@ function _crawler_request(current_url) {
 
                     ret.type = "docx";
                     return ret;
-                }
+                });
 					
 			} else {
 				return ret;
