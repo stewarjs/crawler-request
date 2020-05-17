@@ -130,6 +130,8 @@ function _crawler_request(current_url) {
                     if (res) {
                         ret.metadata = res;
                         //ret.text = res.text;
+                    }else{
+                        ret.metadata = err;
                     }
 
                     ret.type = "docx";
