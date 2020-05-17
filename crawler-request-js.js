@@ -107,9 +107,7 @@ function _crawler_request(current_url) {
 					});
 			} else if (ret.type == "doc") {
 				OFFICEPROPS.getData(data).then(function(metadata){
-                    //ret.metadata = metadata.readOnly;
-                    console.log(metadata.editable);
-                    console.log(metadata.readOnly);
+                    ret.metadata = metadata;
                 }).catch(err => {
 						ret.status = -222;
 						ret.error = err.toString();
