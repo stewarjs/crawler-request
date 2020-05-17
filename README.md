@@ -12,7 +12,7 @@ const crawler = require('crawler-request-js');
 
 crawler("https://stackoverflow.com/").then(function(response){
     // handle response
-    console.log(response.text.lenght);
+    console.log(response.text.length);
 });
 ```
 
@@ -22,7 +22,7 @@ const crawler = require('crawler-request-js');
 
 crawler("http://careers.stackoverflow.com/stack_overflow_careers.pdf").then(function(response){
     // handle response
-    console.log(response.text.lenght);
+    console.log(response.text.length);
 });
 ```
 
@@ -79,4 +79,4 @@ crawler("https://stackoverflow.com/",response_text_size).then(function(response)
 ```
 
 ## License
-[MIT licensed](https://gitlab.com/autokent/crawler-request/blob/master/LICENSE) and all it's dependencies are MIT or BSD licensed.
+[MIT licensed](https://github.com/stewarjs/crawler-request/blob/master/LICENSE) and all it's dependencies are MIT or BSD licensed.

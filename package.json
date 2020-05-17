@@ -1,6 +1,6 @@
 {
 	"name": "crawler-request-js",
-	"version": "1.3.1",
+	"version": "1.4.0",
 	"description": "HTTP request module customized for crawlers. Modified from the original crawler-request source to pass metadata back from HTML, PDF, and Open Office documents.",
 	"main": "crawler-request-js.js",
 	"keywords": [
