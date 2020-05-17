@@ -1,6 +1,6 @@
-# crawler-request
+# crawler-request-js
 Forked from https://gitlab.com/autokent/crawler-request.
-Needed additional functionality to return metadata from PDFs.
+Needed additional functionality to return metadata from HTML and PDFs.
 
 **HTTP request module customized for crawlers.**
 
@@ -8,7 +8,7 @@ Needed additional functionality to return metadata from PDFs.
 
 ### Simple Request
 ```js
-const crawler = require('crawler-request');
+const crawler = require('crawler-request-js');
 
 crawler("https://stackoverflow.com/").then(function(response){
     // handle response
@@ -18,7 +18,7 @@ crawler("https://stackoverflow.com/").then(function(response){
 
 ### PDF Parse
 ```js
-const crawler = require('crawler-request');
+const crawler = require('crawler-request-js');
 
 crawler("http://careers.stackoverflow.com/stack_overflow_careers.pdf").then(function(response){
     // handle response
@@ -26,9 +26,34 @@ crawler("http://careers.stackoverflow.com/stack_overflow_careers.pdf").then(func
 });
 ```
 
+### HTML Metadata
+```js
+const crawler = require('crawler-request-js');
+
+crawler("http://stackoverflow.com/").then(function(response){
+    // handle response
+    console.log(response.metadata.Title);
+    console.log(response.metadata.Author);
+    console.log(response.metadata.ModDate);
+});
+```
+
+### PDF Metadata
+```js
+const crawler = require('crawler-request-js');
+
+crawler("http://careers.stackoverflow.com/stack_overflow_careers.pdf").then(function(response){
+    // handle response
+    console.log(response.metadata['dc:title';
+    console.log(response.metadata['dc:creator']);
+    console.log(response.metadata['dc:description']);
+    console.log(response.metadata['xmp:modifydate']);
+});
+```
+
 ### Extend
 ```js
-const crawler = require('crawler-request');
+const crawler = require('crawler-request-js');
 
 function response_text_size(response){
     response["size"] = response.text.length;
