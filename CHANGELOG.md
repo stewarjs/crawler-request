@@ -1,7 +1,9 @@
 # CHANGELOG
 Here you can find the changes that have been implemented pre- and post- fork from the original source.
-* Need to standardize returned metadata formats.
 * Nice to be able to return Open Office plaintext with response.
+
+## 1.4.1
+* Standardize metadata
 
 ## 1.4.0
 * Added support for Open Office documents (metadata only)

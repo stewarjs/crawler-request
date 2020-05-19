@@ -86,7 +86,8 @@ function _crawler_request(current_url) {
                 ret.metadata = {
                     Title: $('title').text(),
                     Author: $('meta[name="author"]').attr('content'),
-                    ModDate: $('meta[http-equiv="last-modified"]').attr('content'),
+                    Description: $('meta[name="description"]').attr('content'),
+                    ModDate: $('meta[http-equiv="last-modified"]').attr('content')
                 };
 				ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
 				return ret;
@@ -94,7 +95,13 @@ function _crawler_request(current_url) {
 				return PdfParse(data)
 					.then(res => {
 						if (res) {
-							ret.metadata = res.metadata._metadata;
+							//ret.metadata = res.metadata._metadata;
+                            ret.metadata = {
+                                Title: res.metadata._metadata['dc:title'],
+                                Author: res.metadata._metadata['dc:creator'],
+                                Description: res.metadata._metadata['dc:description'],
+                                ModDate: res.metadata._metadata['xmp:modifydate']
+                            };
 							ret.text = res.text;
 						}
 
@@ -107,7 +114,13 @@ function _crawler_request(current_url) {
 					});
 			} else if (ret.type == "doc" || ret.type == "ppt" || ret.type == "xls") {
 				return OFFICEPROPS.getData(data).then(function(metadata){
-                    ret.metadata = metadata;
+                    //ret.metadata = metadata;
+                    ret.metadata = {
+                        Title: metadata.editable.title.value,
+                        Author: metadata.editable.creator.value,
+                        Description: metadata.editable.summary.value,
+                        ModDate: metadata.editable.modified.value
+                    };
                     return ret;
                 }).catch(err => {
 						ret.status = -222;
