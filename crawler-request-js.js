@@ -2,24 +2,16 @@ const Axios = require('axios');
 const FileType = require('file-type');
 const ContentType = require('content-type');
 const IconvLite = require('iconv-lite');
-const HtmlToText = require('html-to-text');
 const cheerio = require('cheerio');
 const PdfParse = require('pdf-parse');
 const OFFICEPROPS = require('officeprops');
 
 
-const html_to_text_options = {
-	tables: true,
-	wordwrap: false,
-	ignoreImage: true,
-	preserveNewlines: false,
-	uppercaseHeadings: false,
-	hideLinkHrefIfSameAsText: true,
-	baseElement: ['html'],
-	ignoreHref: true,
-	//wordwrap:150,
-	noLinkBrackets: true
-};
+const PARSE_PDF_OPTIONS = {
+	// max page number to parse
+	max: 1
+}
+
 
 // Skip these extensions
 const MIME_REGEX = /.*\.(jpg|png|gif|dotx|webp|flif|cr2|tif|bmp|jxr|psd|rar|zip|tar|rar|js|gz|bz2|7z|dmg|mp4|m4v|mid|mkv|webm|mov|avi|wmv|mpg|mp3|m4a|ogg|opus|flac|wav|amr|epub|exe|swf|rtf|woff|woff2|eot|ttf|otf|ico|flv|ps|xz|sqlite|nes|crx|xpi|cab|dep|ar|rpm|z|lz|msi|mxf|mts|wasm|blend|bpg|3gp|css|xlam|xla|xps|exe)$/i;
@@ -93,7 +85,7 @@ function _crawler_request(current_url) {
 				ret.html = null;
 				return ret;
 			} else if (ret.type == "pdf") {
-				return PdfParse(data)
+				return PdfParse(data, PARSE_PDF_OPTIONS)
 					.then(res => {
 						if (res) {
 							//ret.metadata = res.metadata._metadata;
