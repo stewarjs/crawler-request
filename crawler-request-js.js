@@ -118,7 +118,7 @@ function _crawler_request(current_url) {
                     ret.metadata = {
                         Title: metadata.editable.title.value,
                         Author: metadata.editable.creator.value,
-                        Description: metadata.editable.summary.value,
+                        Description: metadata.editable.description.value,
                         ModDate: metadata.editable.modified.value
                     };
                     return ret;
