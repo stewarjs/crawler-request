@@ -2,6 +2,11 @@
 Here you can find the changes that have been implemented pre- and post- fork from the original source.
 * Nice to be able to return Open Office plaintext with response.
 
+## 1.4.2
+* Drop dependency
+* No longer return HTML with response. Anything requiring HTML manipulation should occur within this module.
+* Clean up plaintext returned with PDFs and HTML files. Remove whitespace and only grab #main HTML content.
+
 ## 1.4.1
 * Standardize metadata
 

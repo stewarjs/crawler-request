@@ -1,6 +1,6 @@
 {
 	"name": "crawler-request-js",
-	"version": "1.4.1",
+	"version": "1.4.2",
 	"description": "HTTP request module customized for crawlers. Modified from the original crawler-request source to pass metadata back from HTML, PDF, and Open Office documents.",
 	"main": "crawler-request-js.js",
 	"keywords": [
@@ -14,8 +14,7 @@
         "open-office",
 		"axios",
 		"pdf",
-		"pdf-parser",
-		"html-to-text"
+		"pdf-parser"
 	],
 	"dependencies": {
 		"axios": "^0.18.1",
@@ -23,7 +22,6 @@
         "officeprops": "^1.1.5",
 		"content-type": "^1.0.4",
 		"file-type": "^7.4.0",
-		"html-to-text": "^3.3.0",
 		"iconv-lite": "^0.4.19",
 		"pdf-parse": "^1.0.5"
 	},

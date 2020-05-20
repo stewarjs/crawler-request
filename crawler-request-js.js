@@ -89,7 +89,8 @@ function _crawler_request(current_url) {
                     Description: $('meta[name="description"]').attr('content'),
                     ModDate: $('meta[http-equiv="last-modified"]').attr('content')
                 };
-				ret.text = HtmlToText.fromString(ret.html, html_to_text_options);
+				ret.text = $('#main').text().replace( /\r?\n|\r/g, " " );
+				ret.html = null;
 				return ret;
 			} else if (ret.type == "pdf") {
 				return PdfParse(data)
@@ -102,7 +103,7 @@ function _crawler_request(current_url) {
                                 Description: res.metadata._metadata['dc:description'],
                                 ModDate: res.metadata._metadata['xmp:modifydate']
                             };
-							ret.text = res.text;
+							ret.text = res.text.replace( /\r?\n|\r/g, " " );
 						}
 
 						return ret;
